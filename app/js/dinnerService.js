@@ -13,12 +13,12 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
     // check lab 5 instructions for details
 
     var menu = {};
-    var numberOfGuests = 1;
+    //var numberOfGuests = 1;
+    var n = {numberOfGuests: 1};
 
     this.setNumberOfGuests = function(num) {
         if(num>0) {
-            numberOfGuests = parseInt(num);
-            notifyObservers();
+            n.numberOfGuests = parseInt(num);
         }
     }
 
@@ -39,7 +39,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
 
     // should return
     this.getNumberOfGuests = function() {
-        return numberOfGuests;
+        return n.numberOfGuests;
     }
 
     //Returns the dish that is on the menu for selected type
@@ -55,7 +55,6 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
         }
         return menuDishes;
     }
-
     //Returns all ingredients for all the dishes on the menu.
     this.getAllIngredients = function() {
         var ingredients = {};

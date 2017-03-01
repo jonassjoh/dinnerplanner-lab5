@@ -17,15 +17,21 @@ Instructions, Ingredients and total cost. -->
       <div class="row" id="topViewContainer">
         <div class="col-md-5">
           <!-- DYNAMIC CONTENT HERE -->
-          <h2 id="dishName"></h2>
-          <img id="dishImage"/>
+          <h2 id="dishName">{{ dish.title }}</h2>
+          <img id="dishImage" ng-src="{{ dish.image }}" ng-click="test()"/>
           <p id="dishText"></p>
-          <button id="backButton" class="btn btn-primary"><span class="glyphicon glyphicon-chevron-left"></span> Back to search</button>
+          <button id="backButton" class="btn btn-primary" onclick="history.back()"><span class="glyphicon glyphicon-chevron-left"></span>Back to search</button>
         </div>
         <div class="col-md-7 grid-border bg-warning">
-          <h2>Ingredients for <span id="tableTitle"></span> people:</h2>
+          <h2>Ingredients for <span id="tableTitle">{{numberOfGuests}}</span> people:</h2>
           <table class="table" id="ingredientsTable">
             <!-- DYNAMIC CONTENT HERE -->
+            <tr ng-repeat="ingredient in dish.extendedIngredients">
+                <td>{{ingredient.amount}} {{ingredient.unit}}</td>
+                <td>{{ingredient.name}}</td>
+                <td>SEK</td>
+                <td>{{ingredient.amount}}</td>
+            </tr>
           </table>
           <hr>
           <h4>SEK <span id="dishCost"></span></h4>
@@ -37,7 +43,7 @@ Instructions, Ingredients and total cost. -->
       <div class="row">
         <div class="col-md-7">
           <h1>Preparation</h1>
-          <p id="preparationParagraph"></p>
+          <p id="preparationParagraph" ng-bind-html="dish.instructions"></p>
         </div>
       </div>
     </div>

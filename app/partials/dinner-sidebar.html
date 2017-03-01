@@ -2,7 +2,7 @@
 <!-- SideBarView -->
 <div id="sideBarView" class="col-md-2">
   <h3>My dinner</h3>
-  <div>
+  <div ng-model="name">
     <!--Number of guests: <input type="number" ng-model="numberOfGuests" ng-change="setNumberOfGuest(numberOfGuests)"/> -->
     Number of guests: {{ getNumberOfGuests() }}
   </div>
