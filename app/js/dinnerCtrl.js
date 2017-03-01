@@ -1,4 +1,4 @@
-// Dinner controller that we use whenever we have view that needs to 
+// Dinner controller that we use whenever we have view that needs to
 // display or modify the dinner menu
 dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner) {
 
@@ -6,6 +6,15 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner) {
 
   $scope.setNumberOfGuest = function(number){
     Dinner.setNumberOfGuests(number);
+  }
+
+  $scope.incNumberOfGuests = function() {
+      Dinner.setNumberOfGuests( Dinner.getNumberOfGuests() + 1 );
+  }
+
+  $scope.decNumberOfGuests = function() {
+      if(Dinner.getNumberOfGuests() > 0)
+        Dinner.setNumberOfGuests( Dinner.getNumberOfGuests() - 1 );
   }
 
   $scope.getNumberOfGuests = function() {
