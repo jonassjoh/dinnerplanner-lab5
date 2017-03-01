@@ -13,12 +13,11 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
     // check lab 5 instructions for details
 
     var menu = {};
-    //var numberOfGuests = 1;
-    var n = {numberOfGuests: 1};
+    var numberOfGuests = 1;
 
     this.setNumberOfGuests = function(num) {
         if(num>0) {
-            n.numberOfGuests = parseInt(num);
+            numberOfGuests = parseInt(num);
         }
     }
 
@@ -39,7 +38,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
 
     // should return
     this.getNumberOfGuests = function() {
-        return n.numberOfGuests;
+        return numberOfGuests;
     }
 
     //Returns the dish that is on the menu for selected type

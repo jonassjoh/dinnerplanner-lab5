@@ -12,9 +12,9 @@
   </div>
   <br>
   <table id="sideMenuTable" class="table">
-    <tr>
-      <th>Dish name</th>
-      <th>Cost</th>
+    <tr ng-repeat="dish in getSelectedDishes()">
+      <th>{{ dish.title }}</th>
+      <th>{{ getDishPrice(dish) * getNumberOfGuests() }} SEK</th>
       <th></th>
     </tr>
   </table>

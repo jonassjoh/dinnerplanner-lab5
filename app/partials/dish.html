@@ -18,8 +18,8 @@ Instructions, Ingredients and total cost. -->
         <div class="col-md-5">
           <!-- DYNAMIC CONTENT HERE -->
           <h2 id="dishName">{{ dish.title }}</h2>
-          <img id="dishImage" ng-src="{{ dish.image }}" ng-click="test()"/>
-          <p id="dishText"></p>
+          <img id="dishImage" ng-src="{{ dish.image }}" />
+          <p id="dishText">Ready in {{ dish.readyInMinutes }} minutes</p>
           <button id="backButton" class="btn btn-primary" onclick="history.back()"><span class="glyphicon glyphicon-chevron-left"></span>Back to search</button>
         </div>
         <div class="col-md-7 grid-border bg-warning">
@@ -27,15 +27,15 @@ Instructions, Ingredients and total cost. -->
           <table class="table" id="ingredientsTable">
             <!-- DYNAMIC CONTENT HERE -->
             <tr ng-repeat="ingredient in dish.extendedIngredients">
-                <td>{{ingredient.amount}} {{ingredient.unit}}</td>
+                <td>{{ingredient.amount * numberOfGuests}} {{ingredient.unit}}</td>
                 <td>{{ingredient.name}}</td>
                 <td>SEK</td>
-                <td>{{ingredient.amount}}</td>
+                <td>{{ingredient.amount * numberOfGuests}}</td>
             </tr>
           </table>
           <hr>
-          <h4>SEK <span id="dishCost"></span></h4>
-          <button class="btn btn-primary" id="confirmDishButton"><span class="glyphicon glyphicon-ok"></span> Confirm dish</button>
+          <h4>SEK <span id="dishCost">{{ getDishPrice(dish) * numberOfGuests }}</span></h4>
+          <button class="btn btn-primary" id="confirmDishButton" ng-click="addDishAndReturn()"><span class="glyphicon glyphicon-ok"></span> Confirm dish</button>
           <br>
           <br>
         </div>

@@ -21,7 +21,6 @@ not support it in free version) and list all the dishes that match the search. -
       </div>
       <div class="col-md-2">
         <select class="form-control" id="selectTypes" ng-model="searchType">
-            <option value="">All</option>
             <option ng-repeat="option in getDishTypes" value="{{ option }}">
                 {{ option }}
             </option>
@@ -38,7 +37,7 @@ not support it in free version) and list all the dishes that match the search. -
     </div>
     <div class="row" id="searchResults">
       <!-- DYNAMIC CONTENT GOES HERE -->
-          <a ng-repeat="dish in searchResults" class="col-md-2" style="cursor:pointer" ng-href="#!/dish/:{{ dish.id }}" >
+          <a ng-repeat="dish in searchResults" class="col-md-2" style="cursor:pointer" ng-href="#!/dish/:{{ dish.id }}?type={{searchType}}" >
               <img ng-src="{{ 'https://spoonacular.com/recipeImages/' + dish.image }}" class="img-responsive img-thumbnail" />
               <p class="center-label grey">
                   {{ dish.title }}

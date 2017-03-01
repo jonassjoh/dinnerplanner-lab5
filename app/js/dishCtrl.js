@@ -2,29 +2,40 @@
 // information for one dish
 dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
 
-  // TODO in Lab 5: you need to get the dish according to the routing parameter
-  // $routingParams.paramName
-  // Check the app.js to figure out what is the paramName in this case
+    // TODO in Lab 5: you need to get the dish according to the routing parameter
+    // $routingParams.paramName
+    // Check the app.js to figure out what is the paramName in this case
 
-  $scope.numberOfGuests = Dinner.getNumberOfGuests();
-  $scope.dish = {};
-
-  $scope.test = function () {
+    $scope.getDishPrice = Dinner.getDishPrice;
     $scope.numberOfGuests = Dinner.getNumberOfGuests();
-  }
+    $scope.dish = {};
 
-  var init = function() {
-      var res = Dinner.Dish.get({id: $routeParams.dishId.substring(1) });
+    $scope.$watch(function () {
+        return Dinner.getNumberOfGuests();
+    }, function(vara) {
+        $scope.numberOfGuests = Dinner.getNumberOfGuests();
+    }, true);
 
-      res.$promise.then(function(greeting) {
-          console.log(greeting);
-          $scope.dish = greeting;
+    $scope.addDishAndReturn = function () {
+        Dinner.addDishToMenu($scope.dish, $routeParams.type);
+    }
 
-      }, function(reason) {
-          console.log("Failed");
-          console.log(reason);
-      });
-  }
+    $scope.test = function () {
+        $scope.numberOfGuests = Dinner.getNumberOfGuests();
+    }
 
-  init();
+    var init = function() {
+        var res = Dinner.Dish.get({id: $routeParams.dishId.substring(1) });
+
+        res.$promise.then(function(greeting) {
+            console.log(greeting);
+            $scope.dish = greeting;
+
+        }, function(reason) {
+            console.log("Failed");
+            console.log(reason);
+        });
+    }
+
+    init();
 });
