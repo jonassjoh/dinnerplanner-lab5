@@ -1,0 +1,40 @@
+<!-- We include the sidebar as it is shared across two screens. -->
+<ng-include src="'partials/dinner-sidebar.html'" ng-controller="DinnerCtrl"></ng-include>
+
+<!-- TODO in Lab 5: Display the input box for search (you can ignore the type dropdown since BigOven does
+not support it in free version) and list all the dishes that match the search. -->
+
+<!-- SearchView-->
+<div id="searchView" class="">
+  <div class="col-md-10 search-bar bg-info">
+    <h2>Select dish</h2>
+    <hr>
+    <div class="row">
+      <div class="col-md-5">
+        <div class="form-inline">
+          <input type="text" class="form-control" id="searchField" placeholder="Enter keywords"></input>
+          <button id="searchButton" class="btn btn-primary">
+            <span class="glyphicon glyphicon-search"></span>
+            Search
+          </button>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <select class="form-control" id="selectTypes">
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-10 search-results-container">
+    <div id="loadingIndicator" class="no-display">
+      Loading ........
+    </div>
+    <div id="errorMessage" class="no-display text-alert">
+      There has been an error, please try again later.
+    </div>
+    <div class="row" id="searchResults">
+      <!-- DYNAMIC CONTENT GOES HERE -->
+    </div>
+  </div>
+</div>
+<!-- SearchView end-->

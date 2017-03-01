@@ -1,0 +1,46 @@
+<!-- We include the sidebar as it is shared across two screens. -->
+<ng-include src="'partials/dinner-sidebar.html'" ng-controller="DinnerCtrl"></ng-include>
+
+<!-- TODO in Lab 5: Display the dish information including image, Description,
+Instructions, Ingredients and total cost. -->
+
+<!-- dishView -->
+<div id="dishView" class="">
+  <div class="col-md-10">
+    <div id="loadingIndicator" class="no-display">
+      Loading ........
+    </div>
+    <div id="errorMessage" class="no-display text-alert">
+      There has been an error, please try again later.
+    </div>
+    <div id="dishDetails">
+      <div class="row" id="topViewContainer">
+        <div class="col-md-5">
+          <!-- DYNAMIC CONTENT HERE -->
+          <h2 id="dishName"></h2>
+          <img id="dishImage"/>
+          <p id="dishText"></p>
+          <button id="backButton" class="btn btn-primary"><span class="glyphicon glyphicon-chevron-left"></span> Back to search</button>
+        </div>
+        <div class="col-md-7 grid-border bg-warning">
+          <h2>Ingredients for <span id="tableTitle"></span> people:</h2>
+          <table class="table" id="ingredientsTable">
+            <!-- DYNAMIC CONTENT HERE -->
+          </table>
+          <hr>
+          <h4>SEK <span id="dishCost"></span></h4>
+          <button class="btn btn-primary" id="confirmDishButton"><span class="glyphicon glyphicon-ok"></span> Confirm dish</button>
+          <br>
+          <br>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-7">
+          <h1>Preparation</h1>
+          <p id="preparationParagraph"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- dishView end -->

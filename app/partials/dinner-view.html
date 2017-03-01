@@ -1,0 +1,33 @@
+<!-- dinnerView -->
+<div id="dinnerView" class="">
+  <div class="bg-warning row grid-border">
+    <div class="col-md-3 col-md-offset-1">
+      <h3>
+        My Dinner for <span id="numberOfGuests"></span>
+      </h3>
+    </div>
+    <div class="col-md-7">
+      <button class="btn btn-primary pull-right" id="backButton">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        Go back and edit dinner
+      </button>
+    </div>
+  </div>
+   <div class="row dinner">
+      <div class="col-md-6 col-md-offset-1">
+        <div class="row" id="dinnerItems">
+          <!-- DYNAMIC CONTENT HERE -->
+        </div>
+      </div>
+      <div class="left-border col-md-3">
+        <div>
+          <table id="ingredients" class="table">
+          </table>
+        </div>
+        <p class="text-primary text-right">
+          Total price: <span id="totalCost"></span> SEK
+        </p>
+      </div>
+    </div>
+</div>
+<!-- dinnerView end -->

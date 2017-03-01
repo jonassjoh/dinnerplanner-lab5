@@ -1,0 +1,45 @@
+.background-image {
+  background: url('../images/family.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;   
+}
+
+.grey {
+  background: rgba(211, 211, 211, 0.8);
+}
+
+.welcome {
+  margin-top:10%;
+  margin-bottom:20%;
+  margin-left:2%;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius:10px;
+  padding-bottom:20px;
+}
+
+.search-bar {
+  padding-bottom:2%;
+  padding-left:5%;
+}
+
+.search-results-container {
+  padding: 20px;
+}
+
+.grid-border{
+  border: 1px solid #888;
+}
+
+.dinner {
+  margin-top: 25px;
+}
+
+.left-border {
+  border-left: 1px solid #ccc;
+}
+
+.no-display {
+  display:none;
+}

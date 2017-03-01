@@ -1,0 +1,34 @@
+<!-- TODO in Lab 5: Display the items on the menu with cost for each -->
+<!-- SideBarView -->
+<div id="sideBarView" class="col-md-2">
+  <h3>My dinner</h3>
+  <div>
+    Number of guests: <input type="number" ng-model="numberOfGuests" ng-change="setNumberOfGuest(numberOfGuests)"/>
+  </div>
+  <div>
+    <button id="minusGuest" class="btn"><span class="glyphicon glyphicon-minus"></span></button>
+    <button id="plusGuest" class="btn"><span class="glyphicon glyphicon-plus"></span></button>
+  </div>
+  <br>
+  <table id="sideMenuTable" class="table">
+    <tr>
+      <th>Dish name</th>
+      <th>Cost</th>
+      <th></th>
+    </tr>
+  </table>
+  <hr>
+  <h4 class="text-primary text-center">
+    Total price: <span id="totalPrice"></span> SEK
+  </h4>
+  <button id="confirmDinnerButton" class="btn btn-block btn-primary">
+    <span class="glyphicon glyphicon-ok"></span> Confirm dinner
+  </button>
+  <br>
+</div>
+<!-- SideBarView end-->
+
+<!-- Displaying number of guests both in input box and here is redundant. It is here only for the example
+purpose so you can see how some information from the model can be retrieved. In Lab 5 you will replace
+this with Total price of the menu -->
+<!-- Total number of guest: {{getNumberOfGuests()}} -->
