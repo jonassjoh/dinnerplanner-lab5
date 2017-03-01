@@ -22,6 +22,21 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
         }
     }
 
+    this.DishSearch = $resource('https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search',{},{
+        get: {
+            headers: {
+                'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB'
+            }
+        }
+    });
+    this.Dish = $resource('https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/:id/information',{},{
+        get: {
+            headers: {
+                'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB'
+            }
+        }
+    });
+
     // should return
     this.getNumberOfGuests = function() {
         return numberOfGuests;

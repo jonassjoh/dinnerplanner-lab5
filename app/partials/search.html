@@ -12,15 +12,16 @@ not support it in free version) and list all the dishes that match the search. -
     <div class="row">
       <div class="col-md-5">
         <div class="form-inline">
-          <input type="text" class="form-control" id="searchField" placeholder="Enter keywords"></input>
-          <button id="searchButton" class="btn btn-primary">
+          <input type="text" class="form-control" ng-model="searchQuery" id="searchField" placeholder="Enter keywords"></input>
+          <button id="searchButton" class="btn btn-primary" ng-click="searchDishes()">
             <span class="glyphicon glyphicon-search"></span>
             Search
           </button>
         </div>
       </div>
       <div class="col-md-2">
-        <select class="form-control" id="selectTypes">
+        <select class="form-control" id="selectTypes" ng-model="searchType">
+            <option value="">All</option>
             <option ng-repeat="option in getDishTypes" value="{{ option }}">
                 {{ option }}
             </option>
@@ -37,6 +38,15 @@ not support it in free version) and list all the dishes that match the search. -
     </div>
     <div class="row" id="searchResults">
       <!-- DYNAMIC CONTENT GOES HERE -->
+          <a ng-repeat="dish in searchResults" class="col-md-2" style="cursor:pointer" ng-href="#!/dish/:{{ dish.id }}" >
+              <img ng-src="{{ 'https://spoonacular.com/recipeImages/' + dish.image }}" class="img-responsive img-thumbnail" />
+              <p class="center-label grey">
+                  {{ dish.title }}
+              </p>
+              <p>
+                  {{ 'Ready in ' + dish.readyInMinutes + ' minutes' }}
+              </p>
+          </a>
     </div>
   </div>
 </div>

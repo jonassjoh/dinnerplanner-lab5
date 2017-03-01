@@ -1,6 +1,6 @@
 //DinnerModel Object constructor
 var DinnerModel = function() {
- 
+
 	var menu = {};
 	var numberOfGuests = 1;
 
@@ -11,12 +11,12 @@ var DinnerModel = function() {
 		}
 	}
 
-	// should return 
+	// should return
 	this.getNumberOfGuests = function() {
 		return numberOfGuests;
 	}
 
-	//Returns the dish that is on the menu for selected type 
+	//Returns the dish that is on the menu for selected type
 	this.getSelectedDish = function(type) {
 		return menu[type];
 	}
@@ -60,7 +60,7 @@ var DinnerModel = function() {
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(dish, type) {
-		menu[dish.type] = dish; 
+		menu[dish.type] = dish;
 		notifyObservers();
 	}
 
@@ -106,7 +106,7 @@ var DinnerModel = function() {
 	}
 
 	//function that returns a price of dish given by ID
-	this.getDishPrice = function(dish) {		
+	this.getDishPrice = function(dish) {
 		var ingredients = dish.extendedIngredients;
 		var price = 0;
 		for (var i = 0; i < ingredients.length; i++) {
@@ -120,23 +120,23 @@ var DinnerModel = function() {
 		return ["Appetizer", "Main Course", "Dessert"];
 	}
 
-	/*****************************************  
-	      Observable implementation    
+	/*****************************************
+	      Observable implementation
 	*****************************************/
 
 	var observers = [];
 
-	this.addObserver = function(observer) 
+	this.addObserver = function(observer)
 	{
 		observers.push(observer);
 	}
 
-	var notifyObservers = function(arg) 
+	var notifyObservers = function(arg)
 	{
-		for(var i=0; i<observers.length; i++) 
+		for(var i=0; i<observers.length; i++)
 		{
 			observers[i].update(arg);
-		}	
+		}
 	}
 
 }
