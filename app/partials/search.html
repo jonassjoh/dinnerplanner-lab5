@@ -5,7 +5,7 @@
 not support it in free version) and list all the dishes that match the search. -->
 
 <!-- SearchView-->
-<div id="searchView" class="">
+<div id="searchView" class="" ng-controller="SearchCtrl">
   <div class="col-md-10 search-bar bg-info">
     <h2>Select dish</h2>
     <hr>
@@ -21,6 +21,9 @@ not support it in free version) and list all the dishes that match the search. -
       </div>
       <div class="col-md-2">
         <select class="form-control" id="selectTypes">
+            <option ng-repeat="option in getDishTypes" value="{{ option }}">
+                {{ option }}
+            </option>
         </select>
       </div>
     </div>

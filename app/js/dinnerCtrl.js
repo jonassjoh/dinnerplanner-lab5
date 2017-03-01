@@ -13,8 +13,7 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner) {
   }
 
   $scope.decNumberOfGuests = function() {
-      if(Dinner.getNumberOfGuests() > 0)
-        Dinner.setNumberOfGuests( Dinner.getNumberOfGuests() - 1 );
+      Dinner.setNumberOfGuests( Dinner.getNumberOfGuests() - 1 );
   }
 
   $scope.getNumberOfGuests = function() {
