@@ -15,16 +15,16 @@
     <tr ng-repeat="dish in getSelectedDishes()">
       <th>{{ dish.title }}</th>
       <th>{{ getPrice(dish) * getNumberOfGuests() }} SEK</th>
-      <th></th>
+      <th><button class="btn bth-xs btn-danger" ng-click="rmFromMenu(dish)">X</button></th>
     </tr>
   </table>
   <hr>
   <h4 class="text-primary text-center">
     Total price: <span id="totalPrice">{{getTotalPrice()}}</span> SEK
   </h4>
-  <button id="confirmDinnerButton" class="btn btn-block btn-primary">
+  <a type="button" id="confirmDinnerButton" class="btn btn-block btn-primary" ng-href="#!/dinner">
     <span class="glyphicon glyphicon-ok"></span> Confirm dinner
-  </button>
+  </a>
   <br>
 </div>
 <!-- SideBarView end-->

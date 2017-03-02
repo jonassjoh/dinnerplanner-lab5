@@ -3,7 +3,7 @@
   <div class="bg-warning row grid-border">
     <div class="col-md-3 col-md-offset-1">
       <h3>
-        My Dinner for <span id="numberOfGuests"></span>
+        My Dinner for <span id="numberOfGuests">{{numberOfGuests}}</span>
       </h3>
     </div>
     <div class="col-md-7">
@@ -16,16 +16,29 @@
    <div class="row dinner">
       <div class="col-md-6 col-md-offset-1">
         <div class="row" id="dinnerItems">
-          <!-- DYNAMIC CONTENT HERE -->
+          <div class="col-md-4" ng-repeat="option in getMenu()">
+            <div>
+            <!-- DYNAMIC CONTENT HERE -->
+            <img class="img-responsive img-thumbnail" src="{{option.image}}"/>
+            <p class="text-center grey">{{option.title}}</p>
+            <p>{{getPrice(option)}} SEK</p>
+          </div>
+        </div>
         </div>
       </div>
       <div class="left-border col-md-3">
         <div>
           <table id="ingredients" class="table">
+            <tr ng-repeat="ingredient in getAllIng()">
+                <td>{{ingredient.amount * numberOfGuests}} {{ingredient.unit}}</td>
+                <td>{{ingredient.name}}</td>
+                <td>SEK</td>
+                <td>{{ingredient.amount * numberOfGuests}}</td>
+            </tr>
           </table>
         </div>
         <p class="text-primary text-right">
-          Total price: <span id="totalCost"></span> SEK
+          Total price: <span id="totalCost">{{getTotalPrice()}}</span> SEK
         </p>
       </div>
     </div>
