@@ -14,13 +14,13 @@
   <table id="sideMenuTable" class="table">
     <tr ng-repeat="dish in getSelectedDishes()">
       <th>{{ dish.title }}</th>
-      <th>{{ getDishPrice(dish) * getNumberOfGuests() }} SEK</th>
+      <th>{{ getPrice(dish) * getNumberOfGuests() }} SEK</th>
       <th></th>
     </tr>
   </table>
   <hr>
   <h4 class="text-primary text-center">
-    Total price: <span id="totalPrice"></span> SEK
+    Total price: <span id="totalPrice">{{getTotalPrice()}}</span> SEK
   </h4>
   <button id="confirmDinnerButton" class="btn btn-block btn-primary">
     <span class="glyphicon glyphicon-ok"></span> Confirm dinner

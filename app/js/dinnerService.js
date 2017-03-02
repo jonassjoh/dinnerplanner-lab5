@@ -14,6 +14,15 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
 
     var menu = {};
     var numberOfGuests = 1;
+    var curType ="";
+
+    this.setType = function(t){
+      curType = t;
+    }
+
+    this.getType = function(){
+      return curType;
+    }
 
     this.setNumberOfGuests = function(num) {
         if(num>0) {
@@ -84,7 +93,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
     //Adds the passed dish to the menu. If the dish of that type already exists on the menu
     //it is removed from the menu and the new one added.
     this.addDishToMenu = function(dish, type) {
-        menu[dish.type] = dish;
+        menu[type] = dish;
         notifyObservers();
     }
 

@@ -8,12 +8,14 @@ dinnerPlannerApp.controller('SearchCtrl', function ($scope,Dinner) {
     $scope.getDishTypes = Dinner.getDishTypes();
 
     $scope.searchResults = [];
+    $scope.searchType = $scope.getDishTypes[0];
 
     $scope.searchDishes = function() {
         var dishType = $scope.searchType;
         var res = Dinner.DishSearch.get({query: $scope.searchQuery ,type: dishType});
 
         $scope.searchResults = [];
+        Dinner.setType(dishType);
 
         res.$promise.then(function(greeting) {
             $scope.showSearchResults(greeting, dishType);
