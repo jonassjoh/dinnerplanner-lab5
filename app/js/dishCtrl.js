@@ -10,6 +10,9 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
     $scope.numberOfGuests = Dinner.getNumberOfGuests();
     $scope.dish = {};
 
+    $scope.loading = true;
+    $scope.error = false;
+
     $scope.$watch(function () {
         return Dinner.getNumberOfGuests();
     }, function(vara) {
@@ -28,12 +31,11 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
         var res = Dinner.Dish.get({id: $routeParams.dishId.substring(1) });
 
         res.$promise.then(function(greeting) {
-            console.log(greeting);
             $scope.dish = greeting;
-
+            $scope.loading = false;
         }, function(reason) {
-            console.log("Failed");
-            console.log(reason);
+            $scope.error = true;
+            $scope.loading = false;
         });
     }
 

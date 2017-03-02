@@ -10,16 +10,25 @@ dinnerPlannerApp.controller('SearchCtrl', function ($scope,Dinner) {
     $scope.searchResults = [];
     $scope.searchType = $scope.getDishTypes[0];
 
+    $scope.searching = false;
+    $scope.error = false;
+
     $scope.searchDishes = function() {
         var dishType = $scope.searchType;
-        var res = Dinner.DishSearch.get({query: $scope.searchQuery ,type: dishType});
-
         $scope.searchResults = [];
-        Dinner.setType(dishType);
+        $scope.searching = true;
+        $scope.error = false;
 
+        var res = Dinner.DishSearch.get({query: $scope.searchQuery ,type: dishType});
+        Dinner.setType(dishType);
         res.$promise.then(function(greeting) {
+            $scope.searching = false;
+
             $scope.showSearchResults(greeting, dishType);
+
         }, function(reason) {
+            $scope.searching = false;
+            $scope.error = true;
             alert('Failed: ' + reason);
         });
     }

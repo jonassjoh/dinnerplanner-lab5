@@ -3,7 +3,7 @@
 // dependency on any service you need. Angular will insure that the
 // service is created first time it is needed and then just reuse it
 // the next time.
-dinnerPlannerApp.factory('Dinner',function ($resource) {
+dinnerPlannerApp.factory('Dinner', function ($resource, $cookies, $localStorage) {
 
 
     // TODO in Lab 5: Add your model code from previous labs
@@ -16,8 +16,18 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
     var numberOfGuests = 1;
     var curType ="";
 
+    if($localStorage.appetizer) menu[test()[0]] = $localStorage.appetizer;
+    if($localStorage.maincourse) menu[test()[1]] = $localStorage.maincourse;
+    if($localStorage.dessert) menu[test()[2]] = $localStorage.dessert;
+
+    if($cookies.get('guests'))
+        numberOfGuests = $cookies.get('guests');
+    if($cookies.get('type'))
+        curType = $cookies.get('type');
+
     this.setType = function(t){
       curType = t;
+      $cookies.put('type', curType);
     }
 
     this.getType = function(){
@@ -27,6 +37,8 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
     this.setNumberOfGuests = function(num) {
         if(num>0) {
             numberOfGuests = parseInt(num);
+            $cookies.put('guests', numberOfGuests);
+            $localStorage.guests = numberOfGuests;
         }
     }
 
@@ -95,12 +107,23 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
     this.addDishToMenu = function(dish, type) {
         dish.type = type;
         menu[type] = dish;
+
+        if(type == test()[0]) $localStorage.appetizer = dish;
+        if(type == test()[1]) $localStorage.maincourse = dish;
+        if(type == test()[2]) $localStorage.dessert = dish;
+
+        console.log(dish.type);
+        console.log($localStorage.appetizer);
+
         notifyObservers();
     }
 
     //Removes dish from menu
     this.removeDishFromMenu = function(dish) {
         delete menu[dish.type];
+        if(dish.type == test()[0]) $localStorage.appetizer = null;
+        if(dish.type == test()[1]) $localStorage.maincourse = null;
+        if(dish.type == test()[2]) $localStorage.dessert = null;
         notifyObservers();
     }
 
@@ -151,6 +174,10 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
 
     //function that returns possible dish types
     this.getDishTypes = function () {
+        return ["Appetizer", "Main Course", "Dessert"];
+    }
+
+    function test() {
         return ["Appetizer", "Main Course", "Dessert"];
     }
 
